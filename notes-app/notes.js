@@ -53,7 +53,7 @@ const removeNote = (title) => {
 };
 
 module.exports = {
-  getNotes: getNotes,
-  addNote: addNote,
-  removeNote: removeNote,
+  getNotes,
+  addNote,
+  removeNote,
 };
