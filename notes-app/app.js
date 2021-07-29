@@ -10,11 +10,25 @@ yargs.version('1.5.0');
 yargs.command({
   command: 'add',
   describe: 'Add a new note',
-  handler: function () {
-    console.log('Adding a new note');
+  builder: {
+    title: {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string',
+    },
+    body: {
+      describe: "This is add note's body",
+      demandOption: true,
+      type: 'string',
+    },
+  },
+  handler: function (argv) {
+    console.log('Title: ' + argv.title);
+    console.log('Body: ' + argv.body);
   },
 });
 
+//Create remove command
 yargs.command({
   command: 'remove',
   describe: 'Remove the note',
@@ -23,6 +37,7 @@ yargs.command({
   },
 });
 
+//Create list command
 yargs.command({
   command: 'list',
   describe: 'List of note',
@@ -31,6 +46,7 @@ yargs.command({
   },
 });
 
+//Create read command
 yargs.command({
   command: 'read',
   describe: 'Read the list',
@@ -39,11 +55,5 @@ yargs.command({
   },
 });
 
-console.log(yargs.argv);
-
-// const notefunc = notes();
-// console.log(validator.isURL('https://github.com/moinulhossainmahim'));
-
-// const add = require('./utils');
-// const sum = add(4, -2);
-// console.log(sum);
+yargs.parse();
+// console.log(yargs.argv);
