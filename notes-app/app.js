@@ -1,4 +1,3 @@
-const validator = require('validator');
 const yargs = require('yargs');
 const notes = require('./notes');
 
@@ -47,7 +46,7 @@ yargs.command({
   command: 'list',
   describe: 'List of note',
   handler() {
-    console.log('here the list of items');
+    notes.listNotes();
   },
 });
 
@@ -55,10 +54,16 @@ yargs.command({
 yargs.command({
   command: 'read',
   describe: 'Read the list',
-  handler() {
-    console.log('Reading the list of notes');
+  builder: {
+    title: {
+      describe: 'read note',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+  handler(argv) {
+    notes.readNote(argv.title);
   },
 });
 
 yargs.parse();
-// console.log(yargs.argv);
