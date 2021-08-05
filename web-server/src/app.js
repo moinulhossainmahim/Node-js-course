@@ -46,6 +46,20 @@ app.get('/weather', (req, res) => {
   });
 });
 
+app.get('/help/*', (req, res) => {
+  res.render('error', {
+    message: 'Help article not found!',
+    name: 'Moinul',
+  });
+});
+
+app.get('*', (req, res) => {
+  res.render('error', {
+    message: '404 this page cannot be found!',
+    name: 'Moinul',
+  });
+});
+
 app.listen(3000, () => {
   console.log('Server is up on port 3000');
 });
